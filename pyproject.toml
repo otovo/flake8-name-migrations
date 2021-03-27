@@ -1,5 +1,5 @@
 [tool.poetry]
-name = 'flake8_name_migrations'
+name = 'flake8-name-migrations'
 version = '0.1.0'
 description = 'Flake8 hook for reminding you to give your Django migrations human readable names'
 authors = ['Sondre Lillebø Gundersen <sondrelg@otovo.com>']
