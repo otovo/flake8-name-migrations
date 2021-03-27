@@ -1,0 +1,89 @@
+[tool.poetry]
+name = 'flake8_name_migrations'
+version = '0.1.0'
+description = 'Flake8 hook for reminding you to give your Django migrations human readable names'
+authors = ['Sondre Lillebø Gundersen <sondrelg@otovo.com>']
+license = 'MIT license'
+packages = [{ include = 'flake8_name_migrations' }]
+readme = 'README.md'
+include = ['CHANGELOG.md']
+documentation = 'https://github.com/otovo/flake8-name-migrations'
+homepage = 'https://github.com/otovo/flake8-name-migrations'
+repository = 'https://github.com/otovo/flake8-name-migrations'
+keywords = ['flake8', 'django', 'migrations']
+classifiers = [
+    'Development Status :: 1 - Planning',
+    'Intended Audience :: Developers',
+    'Environment :: Console',
+    'Operating System :: OS Independent',
+    'License :: OSI Approved :: BSD License',
+    'Topic :: Software Development',
+    'Topic :: Software Development :: Quality Assurance',
+    'Natural Language :: English',
+    'Programming Language :: Python',
+    'Programming Language :: Python',
+    'Programming Language :: Python :: 3',
+    'Programming Language :: Python :: 3 :: Only',
+    'Programming Language :: Python :: 3.7',
+    'Programming Language :: Python :: 3.8',
+    'Programming Language :: Python :: 3.9',
+    'Programming Language :: Python :: 3.10',
+    'Typing :: Typed',
+]
+
+[tool.poetry.dependencies]
+python = '^3.7'
+flake8 = '*'
+
+[tool.poetry.dev-dependencies]
+pytest = '^6.2.2'
+ipython = '^7.20.0'
+coverage = '^5.4'
+pytest-cov = '^2.11.1'
+
+[tool.poetry.plugins]
+[tool.poetry.plugins.'flake8.extension']
+NMI = 'flake8_name_migrations:Plugin'
+
+[build-system]
+requires = ['poetry-core>=1.0.0']
+build-backend = 'poetry.core.masonry.api'
+
+[tool.coverage.run]
+source = ['flake8_name_migrations']
+branch = true
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true
+exclude_lines = [
+    # Have to re-enable the standard pragma
+    'pragma: no cover',
+    # Don't complain about missing debug-only code:
+    'def __repr__',
+    'def __str__',
+    'if self\.debug',
+    # Don't complain if tests don't hit defensive assertion code:
+    'raise AssertionError',
+    'raise NotImplementedError',
+    # Don't complain if non-runnable code isn't run:
+    'if 0:',
+    'if TYPE_CHECKING:',
+    'if __name__ == .__main__.:',
+]
+
+[tool.black]
+line-length = 120
+include = '\.pyi?$'
+skip-string-normalization = true
+
+[tool.isort]
+profile = 'black'
+multi_line_output = 3
+include_trailing_comma = true
+line_length = 120
+known_third_party = ['flake8']
+known_first_party = ['flake8_name_migrations']
+
+[tool.pytest.ini_options]
+addopts = ['--cov-report', 'term-missing']
