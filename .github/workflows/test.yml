@@ -60,5 +60,5 @@ jobs:
       - name: Run tests
         run: |
           source .venv/bin/activate
-          poetry run pytest --cov={{ cookiecutter.project_slug }} --verbose --assert=plain
+          poetry run pytest --cov=flake8_name_migrations --verbose --assert=plain
           poetry run coverage report
